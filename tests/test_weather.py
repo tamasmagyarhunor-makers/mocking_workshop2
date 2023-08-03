@@ -1,5 +1,6 @@
 from lib.weather import *
-from tests.mock_class import *
+import unittest
+from unittest.mock import patch
 
 def test_if_weather_instantiates_with_rainy_sunny():
     weather = Weather()
@@ -10,11 +11,33 @@ def test_if_weather_instantiates_with_rainy_sunny():
 
     assert actual == expected
 
-def test_gimme_weather_status():
-    mock_weather = MockClass('Weather')
+def test_if_we_can_go_out_based_on_weather_rainy():
+    weather = Weather()
 
-    actual = mock_weather.mock_method_and_return('gimme_weather_status', 'rainy')
+    with patch('random.choice', return_value='rainy'):
+        actual = weather.can_we_go_out_now()
 
-    expected = 'rainy'
+    expected = 'It seems it will rain, please take an umbrella'
 
     assert actual == expected
+
+def test_if_weather_is_sunny():
+    weather = Weather()
+
+    with patch('random.choice', return_value='sunny'):
+        actual = weather.we_can_go_out_now()
+
+    expected = 'It will be sunny'
+
+    assert actual == expected
+
+
+# def test_gimme_weather_status():
+#     weather = Weather()
+
+#     with patch('random.choice', return_value='rainy'):
+#         actual = weather.gimme_weather_status()
+
+#     expected = 'rainy'
+
+#     assert actual == expected
