@@ -5,7 +5,7 @@ class Weather():
         self.status = ['rainy', 'stormy', 'sunny']
 
     def gimme_weather_status(self):
-        return random.choice(self.status) 
+        return random.choice(self.status)
     
     def can_we_go_out_now(self):
         if self.gimme_weather_status() == 'rainy':
@@ -14,3 +14,14 @@ class Weather():
     def we_can_go_out_now(self):
         if self.gimme_weather_status() == 'sunny':
             return 'It will be sunny'
+        
+    def get_some_weather_data(self):
+        call_to_weather_api = {
+            "success": True,
+            "data": {
+                "city": "London",
+                "temperature": "30C"
+            }
+        }
+
+        return f"Temperature in #{api_response.data.city} is #{api_response.data.temperature}"

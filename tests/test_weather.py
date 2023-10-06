@@ -32,6 +32,22 @@ def test_if_weather_is_sunny():
     assert actual == expected
 
 
+def test_weather_api():
+    weather = Weather()
+
+    with patch('api.call', return_value={
+            "success": True,
+            "data": {
+                "city": "London",
+                "temperature": "30C"
+            }}):
+        actual = weather.get_some_weather_data()
+
+    expected = 'Temperature in London is 30C'
+
+    assert actual == expected
+
+
 # def test_gimme_weather_status():
 #     weather = Weather()
 
