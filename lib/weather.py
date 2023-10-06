@@ -4,11 +4,11 @@ class Weather():
     def __init__(self):
         self.status = ['rainy', 'stormy', 'sunny']
 
-    def gimme_weather_status(self):
-        return random.choice(self.status)
+    def gimme_weather_status(self): #6
+        return random.choice(self.status) #7 -- patch (mock) 
     
-    def can_we_go_out_now(self):
-        if self.gimme_weather_status() == 'rainy':
+    def can_we_go_out_now(self): #4 
+        if self.gimme_weather_status() == 'rainy': #5 
             return 'It seems it will rain, please take an umbrella'
         
     def we_can_go_out_now(self):
