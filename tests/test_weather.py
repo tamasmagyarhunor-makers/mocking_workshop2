@@ -12,10 +12,10 @@ def test_if_weather_instantiates_with_rainy_sunny():
     assert actual == expected
 
 def test_if_we_can_go_out_based_on_weather_rainy():
-    weather = Weather()
+    weather = Weather() #1 
 
-    with patch('random.choice', return_value='rainy'):
-        actual = weather.can_we_go_out_now()
+    with patch('random.choice', return_value='rainy'): #2
+        actual = weather.can_we_go_out_now() #3 
 
     expected = 'It seems it will rain, please take an umbrella'
 
